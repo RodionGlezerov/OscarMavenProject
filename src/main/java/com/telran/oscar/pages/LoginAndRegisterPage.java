@@ -1,9 +1,11 @@
 package com.telran.oscar.pages;
 
-import com.telran.oscar.data.UserData;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.Collection;
 
 public class LoginAndRegisterPage extends PageBase {
 
@@ -47,5 +49,50 @@ public class LoginAndRegisterPage extends PageBase {
         click(loginButton);
         pause(2000);
         return this;
+    }
+
+
+    public String alertGetText() {
+        Alert alert = driver.switchTo().alert();
+        String alertText = alert.getText();
+        System.out.println(alertText);
+        return alert.getText() ;
+    }
+
+    public LoginAndRegisterPage registrationPasswordFirstEmpty(String email, String pwd) {
+        type(emailElement,email);
+        type(confirmPwd,pwd);
+        click(registerButton);
+        return this;
+    }
+
+    public void registrationTwoDiffPassword(String email, String pwd1,String pwd2) {
+        type(emailElement,email);
+        type(pwdElement,pwd1);
+        type(confirmPwd,pwd2);
+        click(registerButton);
+        pause(2000);
+    }
+
+    public LoginAndRegisterPage loginEmptyEmail(String email, String pwd) {
+        click(login_link);
+        type(login_password,pwd);
+        click(loginButton);
+        pause(2000);
+        return this;
+    }
+
+    public LoginAndRegisterPage loginEmptyPassword(String email, String pwd) {
+        click(login_link);
+        type(login_username,email);
+        click(loginButton);
+        pause(2000);
+        return this;
+    }
+
+    @FindBy(xpath = "//body/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/form[1]/div[2]")
+    WebElement error;
+    public String getAttributeError() {
+        return error.getText();
     }
 }

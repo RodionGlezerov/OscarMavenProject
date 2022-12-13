@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
 import java.security.AuthProvider;
+import java.util.Collection;
 
 import static java.lang.String.format;
 import static org.openqa.selenium.By.xpath;
@@ -60,5 +61,29 @@ public class HomePage extends PageBase {
     public HomePage allProducts() {
         click(allProducts);
         return new AllProductsPage(driver);
+    }
+
+    @FindBy(xpath = "//body/nav[@id='top_page']/div[1]/div[1]/form[1]/div[1]/select[1]")
+    WebElement langNew;
+    public HomePage changeLanguageNew() {
+        click(langNew);
+        WebElement element = driver.findElement(xpath(format("//option[contains(text(),'British English')]")));
+        click(element);
+        pause(2000);
+        click(change);
+        return this;
+    }
+
+    @FindBy(xpath = "//body/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]")
+    WebElement welcomeBack;
+    public String getAttributePositive() {
+        return welcomeBack.getText();
+    }
+
+    @FindBy(xpath = "//body/nav[@id='top_page']/div[1]/div[1]/ul[1]/li[1]/a[1]")
+    WebElement account;
+    public HomePage clickAccount() {
+        click(account);
+        return new  AccountPage(driver);
     }
 }

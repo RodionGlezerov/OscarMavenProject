@@ -1,6 +1,6 @@
 package com.talran.oscar.tests;
 
-import com.telran.oscar.data.UserData;
+import com.telran.oscar.data.SmokyUserData;
 import com.telran.oscar.pages.*;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -15,9 +15,9 @@ public class SmokyTest extends TestBase{
     @Test
     public void smokyTask(){
         new HomePage(driver).registration();
-        new LoginAndRegisterPage(driver).registration(UserData.USER_EMAIL,UserData.USER_PASSWORD);
+        new LoginAndRegisterPage(driver).registration(SmokyUserData.USER_EMAIL, SmokyUserData.USER_PASSWORD);
         new HomePage(driver).logout();
-        new LoginAndRegisterPage(driver).login(UserData.USER_EMAIL,UserData.USER_PASSWORD);
+        new LoginAndRegisterPage(driver).login(SmokyUserData.USER_EMAIL, SmokyUserData.USER_PASSWORD);
         Assert.assertTrue(new HomePage(driver).getAttribute().contains("Welcome back"));
         new HomePage(driver).allProducts();
         new AllProductsPage(driver).addToBasketFirstItem();
@@ -26,11 +26,11 @@ public class SmokyTest extends TestBase{
         new BasketPage(driver).checkout();
         Assert.assertTrue(new ShippingAddressPage(driver).getAttribute().contains("Shipping address"));
         new ShippingAddressPage(driver).inputTitle()
-                .inputFirstName(UserData.FIRST_NAME)
-                .inputLastName(UserData.LAST_NAME)
-                .inputAddress(UserData.ADDRESS)
-                .inputCity(UserData.CITY)
-                .inputPostCode(UserData.POST_CODE)
+                .inputFirstName(SmokyUserData.FIRST_NAME)
+                .inputLastName(SmokyUserData.LAST_NAME)
+                .inputAddress(SmokyUserData.ADDRESS)
+                .inputCity(SmokyUserData.CITY)
+                .inputPostCode(SmokyUserData.POST_CODE)
                 .inputCountry()
                 .clickContinue();
         new PaymentPage(driver).clickContinue();
@@ -41,7 +41,7 @@ public class SmokyTest extends TestBase{
     }
     @Test
     public void smokyWithOutRegistration(){
-        new LoginAndRegisterPage(driver).login(UserData.USER_EMAIL,UserData.USER_PASSWORD);
+        new LoginAndRegisterPage(driver).login(SmokyUserData.USER_EMAIL, SmokyUserData.USER_PASSWORD);
         new HomePage(driver).allProducts();
         new AllProductsPage(driver).addToBasketFirstItem();
         Assert.assertTrue(new AllProductsPage(driver).getAttribute().contains("The shellcoder's handbook has been added to your basket."));
@@ -49,11 +49,11 @@ public class SmokyTest extends TestBase{
         new BasketPage(driver).checkout();
         Assert.assertTrue(new ShippingAddressPage(driver).getAttribute().contains("Shipping address"));
         new ShippingAddressPage(driver).inputTitle()
-                .inputFirstName(UserData.FIRST_NAME)
-                .inputLastName(UserData.LAST_NAME)
-                .inputAddress(UserData.ADDRESS)
-                .inputCity(UserData.CITY)
-                .inputPostCode(UserData.POST_CODE)
+                .inputFirstName(SmokyUserData.FIRST_NAME)
+                .inputLastName(SmokyUserData.LAST_NAME)
+                .inputAddress(SmokyUserData.ADDRESS)
+                .inputCity(SmokyUserData.CITY)
+                .inputPostCode(SmokyUserData.POST_CODE)
                 .inputCountry()
                 .clickContinue();
         new PaymentPage(driver).clickContinue();

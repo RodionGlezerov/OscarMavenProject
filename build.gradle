@@ -14,6 +14,7 @@ dependencies {
     implementation 'org.testng:testng:7.1.0'
 
     implementation 'ch.qos.logback:logback-classic:1.4.0'
+    implementation 'ru.yandex.qatools.ashot:ashot:1.5.4'
 }
 
 test {

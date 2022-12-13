@@ -30,5 +30,31 @@ public class AllProductsPage extends HomePage {
         clickWithJSExecutor(viewBasketButton,0,200);
         return new BasketPage(driver);
     }
+
+    @FindBy(xpath = "//body/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]")
+    WebElement alert;
+    public String getAttributeReg() {
+        return alert.getText();
+    }
+
+    @FindBy(xpath = "//nav[@id='top_page']")
+    WebElement navbar;
+    public String getAttributeLogout() {
+        return navbar.getText();
+    }
+    @FindBy(xpath = "//body/nav[@id='top_page']/div[1]/div[1]/ul[1]/li[1]/a[1]")
+    WebElement account;
+
+    public AllProductsPage clickAccount() {
+        click(account);
+        return new AccountPage(driver);
+    }
+    @FindBy(xpath = "//body/div[1]/div[1]/div[1]/div[1]/section[1]/div[1]/ol[1]/li[1]/article[1]/h3[1]/a[1]")
+    WebElement theShellcoderBook;
+    public AllProductsPage addToWishTheShellcoderBook() {
+        click(theShellcoderBook);
+
+        return new TheShellcoderBookPage(driver);
+    }
 }
 

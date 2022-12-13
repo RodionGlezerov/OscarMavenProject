@@ -4,7 +4,11 @@ import com.google.common.io.Files;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
+import ru.yandex.qatools.ashot.AShot;
+import ru.yandex.qatools.ashot.Screenshot;
+import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
 
+import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -113,4 +117,16 @@ public class PageBase {
             System.out.println(linkUrl + " - " + e.getMessage() + " - is a broken link" );
         }
     }
+    public Screenshot takeScreenshotWithScrollDown(){
+        Screenshot screen = new AShot()
+                .shootingStrategy(ShootingStrategies.viewportPasting(ShootingStrategies.scaling(2.0f),1000))
+                .takeScreenshot(driver);
+        try {
+            ImageIO.write(screen.getImage(),"png",new File("screenshot/screen"+ System.currentTimeMillis()+".png"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return screen;
+    }
+
 }

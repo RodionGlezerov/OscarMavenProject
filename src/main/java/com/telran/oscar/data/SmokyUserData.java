@@ -1,6 +1,6 @@
 package com.telran.oscar.data;
 
-public class UserData {
+public class SmokyUserData {
     public static final String USER_EMAIL = "xx.94@mail.ru";
     public static final String USER_PASSWORD = "rodion123";
 
