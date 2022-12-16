@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.Collection;
+
 import static java.lang.String.format;
 import static org.openqa.selenium.By.id;
 import static org.openqa.selenium.By.xpath;
@@ -79,5 +81,11 @@ public class ShippingAddressPage extends BasketPage {
     public ShippingAddressPage clickContinue() {
         click(cont);
         return this;
+    }
+
+    @FindBy(xpath = "//h1[contains(text(),'Shipping address')]")
+    WebElement shippingAddressPage;
+    public String  getAttributeShippingPage() {
+        return shippingAddressPage.getText();
     }
 }

@@ -19,11 +19,13 @@ public class LoginNegativeTests extends TestBase {
     @Test
     public void LoginWithEmptyEmailAndCorrectPassword(){
         new LoginAndRegisterPage(driver).loginEmptyEmail(SmokyUserData.USER_EMAIL, SmokyUserData.USER_PASSWORD);
+        Assert.assertTrue(new LoginAndRegisterPage(driver).getAttributeLoginOrRegister().contains("Login or register"));
 
     }
     @Test
     public void LoginWithCorrectEmailAndEmptyPassword(){
         new LoginAndRegisterPage(driver).loginEmptyPassword(SmokyUserData.USER_EMAIL, SmokyUserData.USER_PASSWORD);
+        Assert.assertTrue(new LoginAndRegisterPage(driver).getAttributeLoginOrRegister().contains("Login or register"));
     }
     @Test
     public void LoginWithCorrectEmailAndWrongPassword(){

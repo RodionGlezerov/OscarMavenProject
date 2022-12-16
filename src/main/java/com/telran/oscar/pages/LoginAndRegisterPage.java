@@ -95,4 +95,18 @@ public class LoginAndRegisterPage extends PageBase {
     public String getAttributeError() {
         return error.getText();
     }
+
+    @FindBy(xpath = "//body/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/form[1]/div[1]")
+    WebElement oops;
+    public String getAttributeErrorPwd() {
+        return oops.getText();
+    }
+
+    @FindBy(xpath = "//li[contains(text(),'Login or register')]")
+    WebElement loginOrRegister;
+    public String getAttributeLoginOrRegister() {
+        return loginOrRegister.getText();
+    }
+
+
 }
