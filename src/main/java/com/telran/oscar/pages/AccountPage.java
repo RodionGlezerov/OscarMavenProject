@@ -4,8 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.Collection;
-
 import static java.lang.String.format;
 import static org.openqa.selenium.By.xpath;
 
@@ -116,7 +114,7 @@ public class AccountPage extends AllProductsPage {
     WebElement remove;
     @FindBy(xpath = "//button[contains(text(),'Remove')]")
     WebElement confirmRemove;
-    public AccountPage clickViewProductDropDownButton() {
+    public AccountPage clickViewProductDropDownButtonAndRemove() {
         click(dropDown);
         click(remove);
         click(confirmRemove);

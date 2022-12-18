@@ -13,28 +13,41 @@ public class OffersTests extends TestBase{
     }
 
     @Test
-    public void NormaSiteOfferSectionAddToBasketTest() {
+    public void NormaSiteOfferSectionTest() {
         new LoginAndRegisterPage(driver).login(SmokyUserData.USER_EMAIL, SmokyUserData.USER_PASSWORD);
         new AllProductsPage(driver).clickBrowseStore().clickOffers();
         Assert.assertTrue(new OffersPage(driver).getAttributeNormaSiteOffer().contains("Normal site offer"));
+    }
+    @Test
+    public void NormaSiteOfferSectionAddToBasketTest() {
+        new LoginAndRegisterPage(driver).login(SmokyUserData.USER_EMAIL, SmokyUserData.USER_PASSWORD);
+        new AllProductsPage(driver).clickBrowseStore().clickOffers();
         new OffersPage(driver).addToBasketShellcoderOfferPage();
         Assert.assertTrue(new OffersPage(driver).getAttributeSchellcoderOffersPage().contains("The shellcoder's handbook"));
-
+    }
+    @Test
+    public void DeferredBenefitOfferSectionTest() {
+        new LoginAndRegisterPage(driver).login(SmokyUserData.USER_EMAIL, SmokyUserData.USER_PASSWORD);
+        new AllProductsPage(driver).clickBrowseStore().clickOffers();
+        Assert.assertTrue(new OffersPage(driver).getAttributeDeferredBenefit().contains("Deferred"));
     }
     @Test
     public void DeferredBenefitOfferSectionAddToBasketTest() {
         new LoginAndRegisterPage(driver).login(SmokyUserData.USER_EMAIL, SmokyUserData.USER_PASSWORD);
         new AllProductsPage(driver).clickBrowseStore().clickOffers();
-        Assert.assertTrue(new OffersPage(driver).getAttributeDeferredBenefit().contains("Deferred"));
         new OffersPage(driver).addToBasketHackingExposedWirelessOfferPage();
         Assert.assertTrue(new OffersPage(driver).getAttributeHackingExposedAlert().contains("Hacking"));
-
+    }
+    @Test
+    public void ShippingOfferSectionTest() {
+        new LoginAndRegisterPage(driver).login(SmokyUserData.USER_EMAIL, SmokyUserData.USER_PASSWORD);
+        new AllProductsPage(driver).clickBrowseStore().clickOffers();
+        Assert.assertTrue(new OffersPage(driver).getAttributeShippingOffer().contains("Shipping"));
     }
     @Test
     public void ShippingOfferSectionAddToBasketTest() {
         new LoginAndRegisterPage(driver).login(SmokyUserData.USER_EMAIL, SmokyUserData.USER_PASSWORD);
         new AllProductsPage(driver).clickBrowseStore().clickOffers();
-        Assert.assertTrue(new OffersPage(driver).getAttributeShippingOffer().contains("Shipping"));
         new OffersPage(driver).addToBasketCodersAtWorkOfferPage();
         Assert.assertTrue(new OffersPage(driver).getAttributeCodersAtWorkAlert().contains("Coders"));
     }
@@ -54,7 +67,7 @@ public class OffersTests extends TestBase{
         new OffersPage(driver).clickBrowseProductButtonInDeferredBenefitOffer();
         Assert.assertTrue(new DeferredBenefitOfferPage(driver).getAttributeDeferredBenefitPage().contains("Deferred"));
     }
-    
+
     @Test
     public void BrowseProductsInOfferButtonsShippingOfferTest(){
         new LoginAndRegisterPage(driver).login(SmokyUserData.USER_EMAIL, SmokyUserData.USER_PASSWORD);
