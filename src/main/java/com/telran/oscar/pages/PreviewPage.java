@@ -17,5 +17,26 @@ public class PreviewPage extends PageBase {
         clickWithJSExecutor(placeOrder,0,500);
         return this;
     }
+
+    @FindBy(xpath = "//body/div[1]/div[1]/div[3]/div[1]/div[2]/h3[1]/a[1]")
+    WebElement changeAddress;
+    public PreviewPage clickChangeAddress() {
+        click(changeAddress);
+        return this;
+    }
+    @FindBy(xpath = "//body/div[1]/div[1]/div[3]/div[2]/div[2]/h3[1]/a[1]")
+    WebElement changePayment;
+
+    public PreviewPage clickChangePayment() {
+        click(changePayment);
+        return this;
+    }
+
+    @FindBy(xpath = "//body/div[1]/div[1]/div[3]/div[1]/div[3]/h3[1]/a[1]")
+    WebElement changeShippingMeth;
+    public PreviewPage clickChangeShippingMethod() {
+        click(changeShippingMeth);
+        return this;
+    }
 }
 

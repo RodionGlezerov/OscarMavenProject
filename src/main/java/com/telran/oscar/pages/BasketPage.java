@@ -39,5 +39,55 @@ public class BasketPage extends AllProductsPage {
     public String  getAttributeBasket() {
         return basket.getText();
     }
+    @FindBy(xpath = "//input[@id='id_form-0-quantity']")
+    WebElement formQuantity;
+
+    @FindBy(xpath = "//button[contains(text(),'Update')]")
+    WebElement updateButton;
+    public BasketPage updateQuantity(String quantity) {
+        type(formQuantity,quantity);
+        click(updateButton);
+        return this;
+    }
+
+    @FindBy(css = ".alert.alert-dismissible.fade.show.alert-info")
+    WebElement infoMessages;
+    public String getAttributeTotal() {
+        return infoMessages.getText();
+    }
+
+    @FindBy(xpath = "//a[contains(text(),'Remove')]")
+    WebElement removeQuantity;
+    public BasketPage removeQuantity() {
+        clickWithJSExecutor(removeQuantity,0,300);
+        return this;
+    }
+
+
+    public BasketPage clikcHomeInBreadCrumbs() {
+        click(homeBreadCrumbs);
+        return this;
+    }
+    @FindBy(xpath = "//a[contains(text(),'Continue shopping')]")
+    WebElement continueShopping;
+
+    public BasketPage clickContinueShopping() {
+        click(continueShopping);
+        return this;
+    }
+
+    @FindBy(xpath = "//body/div[1]/div[1]/div[3]/div[1]/form[1]/div[1]/div[1]/div[1]/a[1]/img[1]")
+    WebElement imageDjangoTshirt;
+    public BasketPage clickImageDjangoTshirt() {
+        click(imageDjangoTshirt);
+        return this;
+    }
+
+    @FindBy(xpath = "//a[contains(text(),'Django T-shirt (Size: Medium)')]")
+    WebElement djangoTshirtLable;
+    public BasketPage clickItemLabelDjangoTshirt() {
+        click(djangoTshirtLable);
+        return this;
+    }
 }
 

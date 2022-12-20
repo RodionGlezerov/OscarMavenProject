@@ -33,6 +33,7 @@ public class PageBase {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+
     }
 
 
@@ -127,6 +128,10 @@ public class PageBase {
             throw new RuntimeException(e);
         }
         return screen;
+    }
+
+    public boolean isElementPresent(By locator) {
+        return driver.findElements(locator).size() > 0;
     }
 
 }

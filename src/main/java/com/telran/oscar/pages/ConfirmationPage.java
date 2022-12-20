@@ -18,4 +18,17 @@ public class ConfirmationPage extends PageBase {
         scrollD(0,500);
         return row.getText();
     }
+
+    @FindBy(xpath = "//a[contains(text(),'Continue shopping')]")
+    WebElement continueShopping;
+    public ConfirmationPage clikcContinueShoppingButton() {
+        clickWithJSExecutor(continueShopping,0,500);
+        return this;
+    }
+
+    @FindBy(xpath = "//body/div[1]/div[1]/div[2]")
+    WebElement infoHeaderAlert;
+    public String getAttributeConfirmation() {
+        return infoHeaderAlert.getText();
+    }
 }

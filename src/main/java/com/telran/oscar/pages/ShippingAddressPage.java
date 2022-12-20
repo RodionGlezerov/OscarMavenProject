@@ -88,4 +88,24 @@ public class ShippingAddressPage extends BasketPage {
     public String  getAttributeShippingPage() {
         return shippingAddressPage.getText();
     }
+    @FindBy(xpath = "//strong[contains(text(),'Oops! We found some errors')]")
+    WebElement foundError;
+
+    public String getAttributeErrorAlert() {
+        return foundError.getText();
+    }
+
+    @FindBy(xpath = "//a[contains(text(),'Edit address')]")
+    WebElement editAddressButton;
+    public ShippingAddressPage clickEditAddress() {
+        click(editAddressButton);
+        return this;
+    }
+
+    @FindBy(xpath = "//button[contains(text(),'Ship to this address')]")
+    WebElement shipToAdd;
+    public ShippingAddressPage clickShipToThisAddress() {
+        click(shipToAdd);
+        return this;
+    }
 }

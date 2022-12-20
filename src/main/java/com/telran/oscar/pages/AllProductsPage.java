@@ -147,5 +147,12 @@ public class AllProductsPage extends HomePage {
         click(offers);
         return new OffersPage(driver);
     }
+    @FindBy(xpath = "//button[contains(text(),'View basket')]")
+    WebElement viewBasket;
+
+    public AllProductsPage clickViewBasketButton() {
+        click(viewBasket);
+        return new BasketPage(driver);
+    }
 }
 

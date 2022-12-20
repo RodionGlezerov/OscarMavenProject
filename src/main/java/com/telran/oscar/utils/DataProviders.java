@@ -40,4 +40,46 @@ public class DataProviders {
         reader.close();
         return userDataInvalidEmail.iterator();
     }
+    @DataProvider
+    public Iterator<Object[]> BasketQuantityOfCloathing() throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(DataProviders.class.getResourceAsStream("/basketDataQuantityOfCloathing")));
+        List<Object[]> userDataInvalidEmail = new ArrayList<Object[]>();
+
+        String line = reader.readLine();
+
+        while (line != null){
+            userDataInvalidEmail.add(line.split(","));
+            line = reader.readLine();
+        }
+        reader.close();
+        return userDataInvalidEmail.iterator();
+    }
+    @DataProvider
+    public Iterator<Object[]> addressValidData() throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(DataProviders.class.getResourceAsStream("/userAddressValidData.csv")));
+        List<Object[]> userValidData = new ArrayList<Object[]>();
+
+        String line = reader.readLine();
+
+        while (line != null){
+            userValidData.add(line.split(","));
+            line = reader.readLine();
+        }
+        reader.close();
+        return userValidData.iterator();
+    }
+    @DataProvider
+    public Iterator<Object[]> addressInvalidData() throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(DataProviders.class.getResourceAsStream("/userAddressInvalidData.csv")));
+        List<Object[]> userValidData = new ArrayList<Object[]>();
+
+        String line = reader.readLine();
+
+        while (line != null){
+            userValidData.add(line.split(","));
+            line = reader.readLine();
+        }
+        reader.close();
+        return userValidData.iterator();
+    }
 }

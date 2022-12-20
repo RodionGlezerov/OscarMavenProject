@@ -16,4 +16,10 @@ public class PaymentPage extends PageBase {
         click(cont);
         return this;
     }
+    @FindBy(xpath = "//h1[contains(text(),'Enter payment details')]")
+    WebElement paymentDetailsLable;
+
+    public String getAttributePaymentDetails() {
+        return paymentDetailsLable.getText();
+    }
 }
