@@ -247,5 +247,21 @@ public class BasketTests extends TestBase {
         Assert.assertTrue(new ConfirmationPage(driver).getAttributeConfirmation().contains("confirmation"));
     }
 
+    @Test(dataProviderClass = DataProviders.class, dataProvider = "addressValidData")
+    public void TotalPriceCompare(String name, String lastName, String add, String city, String zip) {
+        new AllProductsPage(driver).clickClothing();
+        new ClothingPage(driver).clickDjangoTshirt().chooseDjangoTshirtFirstItem()
+                .addToBasket().clickViewBasket().clickCheckOutButton();
+        new ShippingAddressPage(driver)
+                .inputFirstName(name)
+                .inputLastName(lastName)
+                .inputAddress(add)
+                .inputCity(city)
+                .inputPostCode(zip)
+                .inputCountry()
+                .clickContinue();
+        new PaymentPage(driver).clickContinue();
+        Assert.assertTrue(new PreviewPage(driver).getPrices().contains("15"));
+    }
 
 }

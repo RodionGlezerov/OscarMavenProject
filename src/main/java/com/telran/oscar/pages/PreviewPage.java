@@ -1,5 +1,6 @@
 package com.telran.oscar.pages;
 
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -37,6 +38,12 @@ public class PreviewPage extends PageBase {
     public PreviewPage clickChangeShippingMethod() {
         click(changeShippingMeth);
         return this;
+    }
+
+    @FindBy(css = ".total.text-right")
+    WebElement price;
+    public String getPrices() {
+        return price.getText();
     }
 }
 
