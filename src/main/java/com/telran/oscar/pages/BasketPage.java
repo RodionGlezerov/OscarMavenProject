@@ -15,17 +15,20 @@ public class BasketPage extends AllProductsPage {
 
     @FindBy(xpath = "//a[contains(text(),'Proceed to checkout')]")
     WebElement checkoutButton;
+
     public BasketPage checkout() {
-        clickWithJSExecutor(checkoutButton,0,300);
+        clickWithJSExecutor(checkoutButton, 0, 300);
         return new ShippingAddressPage(driver);
     }
 
     @FindBy(xpath = "//a[contains(text(),'Remove')]")
     WebElement remove;
+
     public BasketPage removeShellcoder() {
         click(remove);
         return this;
     }
+
     @FindBy(xpath = "//a[contains(text(),'Home')]")
     WebElement homeBreadCrumbs;
 
@@ -36,30 +39,40 @@ public class BasketPage extends AllProductsPage {
 
     @FindBy(xpath = "//h1[contains(text(),'Basket')]")
     WebElement basket;
-    public String  getAttributeBasket() {
+
+    public String getAttributeBasket() {
         return basket.getText();
     }
+
     @FindBy(xpath = "//input[@id='id_form-0-quantity']")
     WebElement formQuantity;
 
     @FindBy(xpath = "//button[contains(text(),'Update')]")
     WebElement updateButton;
+
     public BasketPage updateQuantity(String quantity) {
-        type(formQuantity,quantity);
+        type(formQuantity, quantity);
+        click(updateButton);
+        return this;
+    }
+    public BasketPage updateQuantityButton() {
         click(updateButton);
         return this;
     }
 
+
     @FindBy(css = ".alert.alert-dismissible.fade.show.alert-info")
     WebElement infoMessages;
+
     public String getAttributeTotal() {
         return infoMessages.getText();
     }
 
     @FindBy(xpath = "//a[contains(text(),'Remove')]")
     WebElement removeQuantity;
+
     public BasketPage removeQuantity() {
-        clickWithJSExecutor(removeQuantity,0,300);
+        clickWithJSExecutor(removeQuantity, 0, 300);
         return this;
     }
 
@@ -68,6 +81,7 @@ public class BasketPage extends AllProductsPage {
         click(homeBreadCrumbs);
         return this;
     }
+
     @FindBy(xpath = "//a[contains(text(),'Continue shopping')]")
     WebElement continueShopping;
 
@@ -78,6 +92,7 @@ public class BasketPage extends AllProductsPage {
 
     @FindBy(xpath = "//body/div[1]/div[1]/div[3]/div[1]/form[1]/div[1]/div[1]/div[1]/a[1]/img[1]")
     WebElement imageDjangoTshirt;
+
     public BasketPage clickImageDjangoTshirt() {
         click(imageDjangoTshirt);
         return this;
@@ -85,8 +100,22 @@ public class BasketPage extends AllProductsPage {
 
     @FindBy(xpath = "//a[contains(text(),'Django T-shirt (Size: Medium)')]")
     WebElement djangoTshirtLable;
+
     public BasketPage clickItemLabelDjangoTshirt() {
         click(djangoTshirtLable);
+        return this;
+    }
+
+    @FindBy(xpath = "//body/div[1]/div[1]/div[3]/div[1]/form[1]/div[1]/div[1]/div[5]/p[1]")
+    WebElement price;
+    public double getPriceTotal() {
+        double num = Double.parseDouble(price.getText().replace("£", ""));
+        return num;
+    }
+
+
+    public BasketPage fillQuantityField(String s) {
+        type(formQuantity,s);
         return this;
     }
 }

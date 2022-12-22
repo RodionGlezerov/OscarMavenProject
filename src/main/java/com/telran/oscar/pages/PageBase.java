@@ -134,4 +134,5 @@ public class PageBase {
         return driver.findElements(locator).size() > 0;
     }
 
+
 }

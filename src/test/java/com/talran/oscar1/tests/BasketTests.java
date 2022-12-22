@@ -264,4 +264,19 @@ public class BasketTests extends TestBase {
         Assert.assertTrue(new PreviewPage(driver).getPrices().contains("15"));
     }
 
+    @Test
+    public void checkTotalPriceTest() {
+        new AllProductsPage(driver).clickClothing();
+        new ClothingPage(driver).clickDjangoTshirt().chooseDjangoTshirtFirstItem()
+                .addToBasket().clickViewBasket();
+        double price = new BasketPage(driver).getPriceTotal();
+        System.out.println(price);
+        new BasketPage(driver).fillQuantityField("2").updateQuantityButton().pause(3000);
+        double price1 = new BasketPage(driver).getPriceTotal();
+        System.out.println(price1);
+        Assert.assertEquals(price1, price * 2);
+        new BasketPage(driver).removeQuantity();
+    }
+
+
 }
